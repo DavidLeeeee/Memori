@@ -1,0 +1,111 @@
+.Background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.LoginBox {
+  width: 400px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 40px 0px 8px 0;
+}
+.LoginBox h1,
+.LoginBox h2 {
+  display: flex;
+  margin: auto;
+  width: 340px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: #555555;
+  background-color: white;
+}
+.LoginBox h2 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 12px;
+  color: #000;
+}
+.LoginBox h2:nth-child(3) {
+  margin-bottom: 24px;
+}
+.LoginBox h5 {
+  font-size: 0.7rem;
+  width: fit-content;
+  color: #888;
+  margin: 48px 32px 8px auto;
+  text-align: center;
+  border-bottom: 1px solid #aaa;
+}
+
+.loginTools {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  width: 100%;
+  text-align: center;
+  margin-top: 32px;
+}
+
+.loginTools li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 340px;
+  height: 42px;
+  line-height: 32px;
+  margin: 4px 0;
+  border-radius: 12px;
+}
+.loginTools li:hover {
+  opacity: 0.9;
+}
+.loginTools li p {
+  font-size: 1.1rem;
+  width: 60px;
+}
+
+hr {
+  width: 340px;
+  margin: auto;
+}
+
+h4 {
+  position: relative;
+  width: 50%;
+  font-size: 0.58rem;
+  font-weight: 300;
+  margin: auto;
+  margin-bottom: 22px;
+  text-align: center;
+  color: gray;
+}
+h4:before,
+h4:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 15%; /* Half of the desired width */
+  height: 0.1px; /* Line height */
+  background-color: lightgray; /* Line color */
+}
+h4:before {
+  left: 0;
+  transform: translateY(-50%);
+}
+h4:after {
+  right: 0;
+  transform: translateY(-50%);
+}
+
+h5:hover {
+  opacity: 0.9;
+}

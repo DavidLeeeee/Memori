@@ -1,23 +1,48 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Dependency directories
+/node_modules/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
+# Environment configuration
+.env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
+# Firebase configurations that should not be exposed
+.firebase/
+.firebase/*
+.firebase.config.js
+.firebaserc
+
+# Ignoring configuration files that may contain secrets
+*.config.js
+
+# Build output
+/build
+/dist
+
+# Compiled static files
+/public/*.js
+/public/*.css
+
+# Testing
+/coverage
+*.test.js
+*.spec.js
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Operating System generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Local development
+.sass-cache

@@ -1,0 +1,19 @@
+.F_RowBox {
+  display: flex;
+  flex-direction: row;
+}
+
+.F_ColBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.opaque {
+  background-color: rgba(100, 100, 100, 0.1);
+}
+
+.Divide {
+  width: 90%;
+  border-top: 1px solid rgba(0, 0, 0, 0.2); /* 윗면의 1px 높이의 회색 실선을 만듭니다. */
+  margin: 12px 0; /* 위아래로 16px의 여백을 추가합니다. */
+}

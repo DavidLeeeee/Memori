@@ -1,0 +1,112 @@
+.NavBox {
+  position: absolute;
+  width: 240px;
+  height: calc(100vh - 24px);
+  padding-top: 24px;
+  background-color: rgba(150, 150, 150, 0.1);
+  transition: left 1s ease-in-out;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 999;
+}
+
+.LoginAlert {
+  width: 200px;
+  padding: 12px 5px;
+  background-color: white;
+  text-align: center;
+}
+
+.NavController {
+  position: absolute;
+  top: 24px;
+  right: 0px;
+  width: 52px;
+  height: 52px;
+  transform: translateX(100%);
+  background: linear-gradient(
+    to right,
+    rgba(230, 230, 230, 0.95) 0%,
+    rgba(240, 240, 240, 0.95) 50%
+  );
+  border-radius: 0px 12px 12px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.NavController:hover {
+  background: linear-gradient(
+    to right,
+    rgba(220, 220, 220, 0.95) 0%,
+    rgba(230, 230, 230, 0.95) 50%
+  );
+}
+
+.MemoCaption {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  width: 220px;
+  padding-left: 12px;
+  margin: 12px 0 12px 0;
+}
+
+.Memo_List {
+  align-items: center;
+}
+.Memo_List ul {
+  list-style: none;
+}
+.Memo_List li {
+  text-decoration: none;
+  width: 200px;
+  height: 28px;
+  margin: 2px 0px;
+  padding: 0 0 0 12px;
+  transition: background-color 0.2s;
+}
+
+.Memo_List li:hover {
+  background-color: rgba(150, 150, 150, 0.3);
+}
+.Memo_List li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  font-size: 0.75rem;
+  color: #444;
+  line-height: 30px;
+}
+
+/* Profile Style */
+.ProfileBox {
+  width: 100%;
+  height: 92px;
+  background-color: rgba(150, 150, 150, 0.2);
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.ProfileName {
+  margin-left: 12px;
+}
+.Profileimg {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid black;
+  transition: right 1s ease-out;
+}
+.Profileimg:hover {
+  opacity: 0.1;
+}
