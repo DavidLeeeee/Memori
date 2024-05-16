@@ -1,0 +1,32 @@
+.HeaderBox {
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+  min-width: 400px;
+  height: 32px;
+  border-bottom: 1px solid gray;
+}
+
+.SettingBox {
+  width: fit-content;
+  align-items: center;
+}
+.SettingBox p {
+  font-size: 0.7rem;
+  color: #555;
+  padding-right: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: visible;
+}
+
+.GlobalSettingBox {
+  width: fit-content;
+  border-left: 1px solid lightgray;
+  margin-left: 24px;
+  padding-left: 20px;
+}
+
+.icon {
+  margin: 0 10px 0 12px;
+}

@@ -20,6 +20,7 @@ function Navigator() {
     setNavStore();
   };
 
+  // 이곳에서 User의 기본적인 Navigation을 로딩한다
   const memos = [
     { id: 1, category: "HTML", description: "HTML 태그 배우기" },
     { id: 2, category: "JavaScript", description: "ES6 문법 익히기" },
@@ -44,9 +45,9 @@ function Navigator() {
       {/* <h2 className={styles.LoginAlert}>로그인을 해주세요</h2> */}
       <div onClick={handleIconClick} className={styles.NavController}>
         {navState === 0 ? (
-          <AiOutlineDoubleRight size={28} />
+          <AiOutlineDoubleRight size={24} color="#333" />
         ) : (
-          <AiOutlineDoubleLeft size={28} />
+          <AiOutlineDoubleLeft size={24} color="#333" />
         )}
       </div>
 
@@ -59,7 +60,7 @@ function Navigator() {
           {memos.map((memo) => (
             <li key={memo.id}>
               <Link className="Memo_Link" to={`/edit/${memo.id}`}>
-                <AiOutlineHolder size={16} />
+                <AiOutlineHolder size={16} style={{ marginRight: "4px" }} />
                 {memo.category}
               </Link>
             </li>
@@ -78,7 +79,7 @@ function Navigator() {
           {pins.map((pins) => (
             <li key={pins.id}>
               <Link className="Memo_Link" to={`/view/${pins.id}`}>
-                <AiOutlineHolder size={16} />
+                <AiOutlineHolder size={16} style={{ marginRight: "4px" }} />
                 {pins.category}
               </Link>
             </li>
@@ -97,7 +98,7 @@ function Navigator() {
           {social.map((social) => (
             <li key={social.id}>
               <Link className="Memo_Link" to={`/social/${social.id}`}>
-                <AiOutlineHolder size={16} />
+                <AiOutlineHolder size={16} style={{ marginRight: "4px" }} />
                 {social.category}
               </Link>
             </li>
@@ -105,6 +106,11 @@ function Navigator() {
         </ul>
       </section>
 
+      <hr className={styledBox.Divide} />
+
+      <section>
+        <h3>탐색</h3>
+      </section>
       <Profile navState={navState} />
     </nav>
   );

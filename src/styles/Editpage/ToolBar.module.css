@@ -1,0 +1,63 @@
+.ToolBox {
+  width: calc(100% - 20px);
+  padding-right: 20px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafafa;
+  border-bottom: 1px solid #c0c0c0;
+}
+
+section button {
+  all: unset;
+  width: 24px;
+  height: 24px;
+  margin: 0 8px;
+  background-color: #fafafa;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section button:hover {
+  background-color: #f0f0f0;
+}
+
+input[type="number"] {
+  font-size: 16px;
+  background-color: #fafafa;
+  border: 0px;
+  cursor: pointer; /* 커서 스타일 변경 */
+  width: 42px;
+  height: 20px; /* 높이 설정 */
+  outline: none;
+}
+
+.controlBox,
+.fontBox,
+.ArrayBox {
+  border-left: 1px solid lightgray;
+  padding: 0 32px;
+  position: relative;
+}
+.ArrayBox {
+  border-right: 1px solid lightgray;
+}
+
+.colorPalette {
+  position: absolute;
+  top: 100%;
+  left: 72%;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+  padding: 10px;
+}
+
+.colorSwatch {
+  width: 22px; /* width of each color swatch */
+  height: 22px; /* height of each color swatch */
+  cursor: pointer; /* cursor as pointer */
+}
