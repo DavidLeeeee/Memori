@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../../styles/Editpage/ContentBox.module.css";
 
-export const ContentBox = () => {
+export const ContentBox = ({ id }) => {
   const [content, setContent] = useState("");
   const textAreaRef = useRef(null);
 
@@ -26,8 +26,11 @@ export const ContentBox = () => {
         spellCheck={false}
         placeholder="..."
       />
+      <p>box{id}</p>
     </div>
   );
 };
 
 export default ContentBox;
+
+// 추후 id는 지워도 됨 / 나중에 db연동할 때 console 대비 (연관파일 Edit_Page)

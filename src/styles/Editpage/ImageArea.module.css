@@ -1,0 +1,56 @@
+.imageBox {
+  width: 95%;
+  max-width: 1375px;
+  position: relative;
+}
+
+.dropArea {
+  width: 100%;
+  border: 2px dashed #ccc;
+  display: flex;
+  flex-direction: column; /* Change to column to allow vertical expansion */
+  justify-content: center;
+  align-items: center;
+  margin: 8px 0;
+  position: relative;
+}
+
+.fileInput {
+  display: none;
+}
+
+.preview {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  width: 100%;
+  vertical-align: bottom; /* Remove space below the image */
+}
+
+.uploadButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  padding: 10px 20px;
+  background-color: #eee;
+  color: rgb(71, 71, 71);
+  border: none;
+  border-radius: 0 0 0 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.uploadButton:hover {
+  background-color: #ddd;
+}
+
+.imageWrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 0; /* Ensure no margin below the image wrapper */
+  padding-bottom: 0;
+}
+.imageWrapper:hover {
+  cursor: ew-resize;
+}
