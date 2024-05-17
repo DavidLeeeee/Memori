@@ -9,7 +9,6 @@ export const ContentBox = () => {
     setContent(e.target.value);
   };
 
-  //텍스트영역 크기 조절
   useEffect(() => {
     if (textAreaRef.current) {
       textAreaRef.current.style.height = "auto";
