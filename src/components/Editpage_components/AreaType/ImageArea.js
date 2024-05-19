@@ -1,5 +1,7 @@
 import React, { useState, useRef } from "react";
 import styles from "../../../styles/Editpage/ImageArea.module.css";
+import { RiDeleteBin6Line, RiScissorsCutLine } from "react-icons/ri";
+import { useImageCropper } from "./ImageCropper";
 
 const ImageArea = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -9,42 +11,40 @@ const ImageArea = () => {
   const startX = useRef(0);
   const initialWidth = useRef(50);
 
-  const handleDrop = (event) => {
+  //파일 삽입
+  const imageDrop = (event) => {
     event.preventDefault();
     event.stopPropagation();
-
     const files = event.dataTransfer.files;
     if (files && files[0]) {
       const file = files[0];
       setSelectedImage(URL.createObjectURL(file));
     }
   };
-
-  const handleDragOver = (event) => {
+  const imageDragOver = (event) => {
     event.preventDefault();
     event.stopPropagation();
   };
-
-  const handleFileChange = (event) => {
+  const FileChanged = (event) => {
     const files = event.target.files;
     if (files && files[0]) {
       const file = files[0];
       setSelectedImage(URL.createObjectURL(file));
     }
   };
-
-  const handleButtonClick = () => {
+  const imageFileSelect = () => {
     fileInputRef.current.click();
   };
 
-  const handleMouseDown = (event) => {
+  // 드래그 이미지 크기 조절
+  const imageDragStart = (event) => {
     event.preventDefault();
     startX.current = event.clientX;
     initialWidth.current = imageWidth; // Store the initial width
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
+    document.addEventListener("mousemove", imageDragMove);
+    document.addEventListener("mouseup", imageDragEnd);
   };
-  const handleMouseMove = (event) => {
+  const imageDragMove = (event) => {
     if (imageBoxRef.current) {
       const imageBoxRect = imageBoxRef.current.getBoundingClientRect();
       const deltaX = event.clientX - startX.current;
@@ -55,34 +55,53 @@ const ImageArea = () => {
       }
     }
   };
-  // 마우스이벤트 삭제
-  const handleMouseUp = () => {
-    document.removeEventListener("mousemove", handleMouseMove);
-    document.removeEventListener("mouseup", handleMouseUp);
+  const imageDragEnd = () => {
+    document.removeEventListener("mousemove", imageDragMove);
+    document.removeEventListener("mouseup", imageDragEnd);
   };
+
+  //이미지 삭제
+  const handleDeleteClick = () => {
+    setSelectedImage(null);
+  };
+
+  //이미지 편집
+  const { handleEditClick, renderCropper } = useImageCropper(
+    selectedImage,
+    setSelectedImage
+  );
 
   return (
     <div className={styles.imageBox} ref={imageBoxRef}>
       <div
         className={styles.dropArea}
-        onDrop={handleDrop}
-        onDragOver={handleDragOver}
+        onDrop={imageDrop}
+        onDragOver={imageDragOver}
       >
-        <button onClick={handleButtonClick} className={styles.uploadButton}>
+        <button onClick={imageFileSelect} className={styles.uploadButton}>
           Select File
         </button>
 
         {selectedImage ? (
           <div
             className={styles.imageWrapper}
-            style={{ width: `${imageWidth}%` }}
+            style={{ width: `${imageWidth}%`, minWidth: "120px" }}
           >
             <img
               src={selectedImage}
               alt="Uploaded"
               className={styles.preview}
-              onMouseDown={handleMouseDown}
+              onMouseDown={imageDragStart}
             />
+            {renderCropper()}
+            <div className={styles.overlay}>
+              <div className={styles.EditIcon} onClick={handleEditClick}>
+                <RiScissorsCutLine color="black" />
+              </div>
+              <div className={styles.EditIcon} onClick={handleDeleteClick}>
+                <RiDeleteBin6Line color="black" />
+              </div>
+            </div>
           </div>
         ) : (
           <p>Drag & Drop an image here</p>
@@ -92,7 +111,7 @@ const ImageArea = () => {
       <input
         type="file"
         accept="image/*"
-        onChange={handleFileChange}
+        onChange={FileChanged}
         ref={fileInputRef}
         className={styles.fileInput}
       />

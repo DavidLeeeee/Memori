@@ -6,6 +6,7 @@
 
 .dropArea {
   width: 100%;
+  min-height: 82px;
   border: 2px dashed #ccc;
   display: flex;
   flex-direction: column; /* Change to column to allow vertical expansion */
@@ -53,4 +54,83 @@
 }
 .imageWrapper:hover {
   cursor: ew-resize;
+}
+
+/* 이미지 편집 오버레이 */
+.overlay {
+  z-index: 1000;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-150%, -50%);
+  background-color: rgb(79, 190, 250);
+  border-radius: 8px;
+  color: white;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* display: none; */
+}
+.EditIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+  margin: 4px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 6px;
+  padding: 2px 12px;
+}
+
+/* 이미지 자르기 스타일 */
+.cropArea {
+  position: absolute;
+  border: 4px dashed #000;
+  z-index: 100;
+  cursor: move;
+}
+
+.cropHandle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border: 1px solid #000;
+}
+
+.cropHandle.tl {
+  top: -5px;
+  left: -5px;
+  cursor: nwse-resize;
+}
+.cropHandle.tr {
+  top: -5px;
+  right: -5px;
+  cursor: nesw-resize;
+}
+.cropHandle.bl {
+  bottom: -5px;
+  left: -5px;
+  cursor: nesw-resize;
+}
+.cropHandle.br {
+  bottom: -5px;
+  right: -5px;
+  cursor: nwse-resize;
+}
+
+.cropButton {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  transform: translate(100%, 0%);
+  padding: 5px 10px;
+  background-color: #69e;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
