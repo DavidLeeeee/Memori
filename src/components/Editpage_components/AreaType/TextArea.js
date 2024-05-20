@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../../../styles/Editpage/ContentBox.module.css";
 
-export const TextArea = ({ id }) => {
+export const TextArea = () => {
   const [content, setContent] = useState("");
   const textAreaRef = useRef(null);
 
@@ -26,7 +26,6 @@ export const TextArea = ({ id }) => {
         spellCheck={false}
         placeholder="..."
       />
-      <p>box{id}</p>
     </div>
   );
 };

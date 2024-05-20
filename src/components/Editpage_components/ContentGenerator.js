@@ -9,9 +9,9 @@ export const ContentGenerator = ({ addContentBox }) => {
   const onClickButton = () => {
     setCreateModal((prevState) => (prevState === 0 ? 1 : 0));
   };
-  const handleIconClick = () => {
+  const handleIconClick = (type) => {
     onClickButton();
-    addContentBox();
+    addContentBox(type);
   };
 
   return (
@@ -34,17 +34,17 @@ export const ContentGenerator = ({ addContentBox }) => {
             />
             <div className={styles.ContentList}>
               <FaCode
-                onClick={handleIconClick}
+                onClick={() => handleIconClick("embed")}
                 size={24}
                 className={styles.contentIcon}
               />
               <ImFilePicture
-                onClick={handleIconClick}
+                onClick={() => handleIconClick("image")}
                 size={24}
                 className={styles.contentIcon}
               />
               <RxText
-                onClick={handleIconClick}
+                onClick={() => handleIconClick("text")}
                 size={24}
                 className={styles.contentIcon}
               />

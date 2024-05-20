@@ -3,14 +3,13 @@ import styledBox from "../styles/boxFramer.module.css";
 import ToolBar from "../components/Editpage_components/ToolBar";
 import ContentBox from "../components/Editpage_components/ContentBox";
 import ContentGenerator from "../components/Editpage_components/ContentGenerator";
-import ImageArea from "../components/Editpage_components/AreaType/ImageArea";
 
 function Edit_page() {
   const [contentBoxes, setContentBoxes] = useState([]);
   const [nextId, setNextId] = useState(0);
 
-  const addContentBox = (index) => {
-    const newContentBox = { id: nextId, content: "" };
+  const addContentBox = (index, type) => {
+    const newContentBox = { id: nextId, type };
     const newContentBoxes = [...contentBoxes];
     newContentBoxes.splice(index, 0, newContentBox);
     setContentBoxes(newContentBoxes);
@@ -30,7 +29,6 @@ function Edit_page() {
             />
           </React.Fragment>
         ))}
-        <ImageArea />
       </div>
     </div>
   );

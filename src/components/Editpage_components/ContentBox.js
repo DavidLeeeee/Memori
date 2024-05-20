@@ -1,36 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import styles from "../../styles/Editpage/ContentBox.module.css";
+import TextArea from "./AreaType/TextArea";
+import ImageArea from "./AreaType/ImageArea";
 
-export const ContentBox = ({ id }) => {
-  const [content, setContent] = useState("");
-  const textAreaRef = useRef(null);
-
-  const handleChange = (e) => {
-    setContent(e.target.value);
-  };
-
-  useEffect(() => {
-    if (textAreaRef.current) {
-      textAreaRef.current.style.height = "auto";
-      textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
-    }
-  }, [content]);
-
+export const ContentBox = ({ id, type }) => {
   return (
     <div className={styles.ContentBox}>
-      <textarea
-        ref={textAreaRef}
-        className={styles.TextArea}
-        value={content}
-        onChange={handleChange}
-        spellCheck={false}
-        placeholder="..."
-      />
+      {type === "text" && <TextArea id={id} />}
+      {type === "image" && <ImageArea id={id} />}
       <p>box{id}</p>
     </div>
   );
 };
 
 export default ContentBox;
-
-// 추후 id는 지워도 됨 / 나중에 db연동할 때 console 대비 (연관파일 Edit_Page)
