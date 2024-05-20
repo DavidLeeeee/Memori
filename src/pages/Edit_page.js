@@ -21,11 +21,13 @@ function Edit_page() {
     <div>
       <ToolBar />
       <div className={styledBox.MainContainer}>
-        <ContentGenerator addContentBox={() => addContentBox(0)} />
+        <ContentGenerator addContentBox={(type) => addContentBox(0, type)} />
         {contentBoxes.map((box, index) => (
           <React.Fragment key={box.id}>
-            <ContentBox id={box.id} />
-            <ContentGenerator addContentBox={() => addContentBox(index + 1)} />
+            <ContentBox id={box.id} type={box.type} />
+            <ContentGenerator
+              addContentBox={(type) => addContentBox(index + 1, type)}
+            />
           </React.Fragment>
         ))}
         <ImageArea />
