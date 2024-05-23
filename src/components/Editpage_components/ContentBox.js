@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useDrag, useDrop } from "react-dnd";
 import styles from "../../styles/Editpage/ContentBox.module.css";
 import TextArea from "./AreaType/TextArea";
 import ImageArea from "./AreaType/ImageArea";
@@ -11,30 +12,79 @@ import {
 import { BsBorderOuter } from "react-icons/bs";
 import { RiColorFilterLine } from "react-icons/ri";
 
-export const ContentBox = ({ id, type, removeBox }) => {
+const ItemType = "CONTENT_BOX";
+
+export const ContentBox = ({ id, type, index, moveContentBox, removeBox }) => {
   const [contentModal, setContentModal] = useState(0);
-  const SettingOnClick = () => {
-    setContentModal((prevState) => (prevState === 0 ? 1 : 0));
+  const ref = useRef(null);
+  const handleMouseEnter = () => {
+    setContentModal(1);
   };
+  const handleMouseLeave = () => {
+    setContentModal(0);
+  };
+  const [, drop] = useDrop({
+    accept: ItemType,
+    hover(item, monitor) {
+      if (!ref.current) {
+        return;
+      }
+      const dragIndex = item.index;
+      const hoverIndex = index;
+      if (dragIndex === hoverIndex) {
+        return;
+      }
+
+      const hoverBoundingRect = ref.current?.getBoundingClientRect();
+      const hoverMiddleY =
+        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+      const clientOffset = monitor.getClientOffset();
+      const hoverClientY = clientOffset.y - hoverBoundingRect.top;
+
+      if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+        return;
+      }
+      if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
+        return;
+      }
+      moveContentBox(dragIndex, hoverIndex);
+      item.index = hoverIndex;
+    },
+  });
+
+  const [{ isDragging }, drag] = useDrag({
+    type: ItemType,
+    item: { type: ItemType, id, index },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+  drag(drop(ref));
 
   return (
-    <div className={styles.ContentBox}>
+    <div
+      ref={ref}
+      className={`${styles.ContentBox} ${isDragging ? styles.dragging : ""}`}
+    >
       <AiOutlineHolder className={styles.icon} />
-
       <div className={styles.contentArea}>
         {type === "embed" && <EmbedArea id={id} />}
         {type === "text" && <TextArea id={id} />}
         {type === "image" && <ImageArea id={id} />}
       </div>
-
-      <div>
-        <AiOutlineMore onClick={SettingOnClick} className={styles.icon} />
-        {contentModal === 1 && (
-          <div className={styles.boxSettingModal}>
-            <ModalBox removeBox={() => removeBox(id)} />
-            {/* <p>{id}</p> */}
-          </div>
-        )}
+      <div
+        className={styles.iconContainer}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <AiOutlineMore className={styles.icon} />
+        <div
+          className={`${styles.boxSettingModal} ${
+            contentModal === 1 ? styles.show : styles.hide
+          }`}
+        >
+          <ModalBox removeBox={() => removeBox(id)} />
+        </div>
       </div>
     </div>
   );

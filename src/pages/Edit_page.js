@@ -3,6 +3,8 @@ import styledBox from "../styles/boxFramer.module.css";
 import ToolBar from "../components/Editpage_components/ToolBar";
 import ContentBox from "../components/Editpage_components/ContentBox";
 import ContentGenerator from "../components/Editpage_components/ContentGenerator";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 function Edit_page() {
   const [contentBoxes, setContentBoxes] = useState([]);
@@ -16,13 +18,21 @@ function Edit_page() {
     setNextId(nextId + 1);
   };
 
+  const moveContentBox = (dragIndex, hoverIndex) => {
+    const dragItem = contentBoxes[dragIndex];
+    const updatedContentBoxes = [...contentBoxes];
+    updatedContentBoxes.splice(dragIndex, 1);
+    updatedContentBoxes.splice(hoverIndex, 0, dragItem);
+    setContentBoxes(updatedContentBoxes);
+  };
+
   //삭제 함수
   const removeContentBox = (id) => {
     setContentBoxes(contentBoxes.filter((box) => box.id !== id));
   };
 
   return (
-    <div>
+    <DndProvider backend={HTML5Backend}>
       <ToolBar />
       <div className={styledBox.MainContainer}>
         <ContentGenerator addContentBox={(type) => addContentBox(0, type)} />
@@ -31,7 +41,9 @@ function Edit_page() {
             <ContentBox
               id={box.id}
               type={box.type}
+              index={index}
               removeBox={removeContentBox}
+              moveContentBox={moveContentBox}
             />
             <ContentGenerator
               addContentBox={(type) => addContentBox(index + 1, type)}
@@ -39,7 +51,7 @@ function Edit_page() {
           </React.Fragment>
         ))}
       </div>
-    </div>
+    </DndProvider>
   );
 }
 

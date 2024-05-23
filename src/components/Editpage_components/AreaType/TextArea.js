@@ -3,7 +3,7 @@ import styles from "../../../styles/Editpage/TextArea.module.css";
 
 export const TextArea = () => {
   const [content, setContent] = useState("");
-  const [width, setWidth] = useState(100); // 기본값 50%
+  const [width, setWidth] = useState(90);
   const textAreaRef = useRef(null);
   const containerRef = useRef(null);
   const isResizing = useRef(false);

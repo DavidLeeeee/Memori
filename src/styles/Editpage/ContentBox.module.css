@@ -18,7 +18,17 @@
   top: 50%;
   right: 0;
   transform: translate(-70%, -50%);
+  transition: all 0.3s;
 }
+.boxSettingModal.show {
+  opacity: 1;
+  pointer-events: auto; /* Allow interaction when visible */
+}
+.boxSettingModal.hide {
+  opacity: 0;
+  pointer-events: none; /* Prevent interaction when hidden */
+}
+
 .contentArea {
   flex-grow: 1;
   display: flex;
