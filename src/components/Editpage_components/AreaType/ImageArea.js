@@ -72,7 +72,7 @@ const ImageArea = () => {
   );
 
   return (
-    <div className={styles.imageBox} ref={imageBoxRef}>
+    <div className={styles.ContentBox} ref={imageBoxRef}>
       <div
         className={styles.dropArea}
         onDrop={imageDrop}

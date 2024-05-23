@@ -1,18 +1,25 @@
-.imageBox {
-  width: 95%;
-  max-width: 1375px;
+.ContentBox {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  max-width: 1365px;
+  height: fit-content;
+  padding: 8px 0;
+  min-width: 320px;
 }
 
 .dropArea {
-  width: 100%;
+  width: 95%;
+  height: auto;
   min-height: 82px;
   border: 2px dashed #ccc;
   display: flex;
   flex-direction: column; /* Change to column to allow vertical expansion */
   justify-content: center;
   align-items: center;
-  margin: 8px 0;
   position: relative;
 }
 
@@ -49,8 +56,6 @@
   position: relative;
   display: inline-block;
   width: 100%;
-  margin-bottom: 0; /* Ensure no margin below the image wrapper */
-  padding-bottom: 0;
 }
 .imageWrapper:hover {
   cursor: ew-resize;

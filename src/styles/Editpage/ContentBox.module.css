@@ -1,25 +1,50 @@
 .ContentBox {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 95%;
   max-width: 1365px;
   height: fit-content;
   padding: 8px 0;
+  position: relative;
 }
 
-.TextArea {
-  width: 100%;
-  height: auto;
-  min-height: 20px; /* 최소 높이 설정 */
-  padding: 16px;
-  border: 1px solid #e3e3e3;
+.boxSettingModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-70%, -50%);
+}
+.contentArea {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon,
+.icon2 {
+  transition: transform 0.1s ease-in-out;
+}
+.icon:hover,
+.icon2:hover {
+  transform: scale(1.3);
+}
+
+.icon2 {
+  margin: 4px 2px;
+}
+
+.modalArea {
+  background-color: rgba(80, 80, 80, 0.1);
   border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 16px;
-  line-height: 1.1;
-  overflow: hidden;
-  resize: none;
-  outline: #000;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }

@@ -62,7 +62,7 @@ const EmbedArea = () => {
                   className={styles.LinkInput}
                   placeholder="링크를 입력하세요..."
                 />
-                <button onClick={handleEmbed} className={styles.embedButton}>
+                <button onClick={handleEmbed} className={styles.insertButton}>
                   Insert
                 </button>
               </div>
@@ -77,8 +77,7 @@ const EmbedArea = () => {
           {selectedOption === "youtube" && (
             <div className={styles.embedContainer}>
               <iframe
-                width="560"
-                height="315"
+                className={styles.embedIframe}
                 src={getEmbedUrl(embedLink)}
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

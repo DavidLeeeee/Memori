@@ -16,6 +16,11 @@ function Edit_page() {
     setNextId(nextId + 1);
   };
 
+  //삭제 함수
+  const removeContentBox = (id) => {
+    setContentBoxes(contentBoxes.filter((box) => box.id !== id));
+  };
+
   return (
     <div>
       <ToolBar />
@@ -23,7 +28,11 @@ function Edit_page() {
         <ContentGenerator addContentBox={(type) => addContentBox(0, type)} />
         {contentBoxes.map((box, index) => (
           <React.Fragment key={box.id}>
-            <ContentBox id={box.id} type={box.type} />
+            <ContentBox
+              id={box.id}
+              type={box.type}
+              removeBox={removeContentBox}
+            />
             <ContentGenerator
               addContentBox={(type) => addContentBox(index + 1, type)}
             />

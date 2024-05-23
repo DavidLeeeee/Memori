@@ -48,21 +48,19 @@ export const TextArea = () => {
 
   return (
     <div
-      className={styles.Container}
+      className={styles.ContentBox}
       ref={containerRef}
       style={{ width: `${width}%`, minWidth: "320px" }}
     >
-      <div className={styles.ContentBox}>
-        <textarea
-          ref={textAreaRef}
-          className={styles.TextArea}
-          value={content}
-          onChange={handleChange}
-          spellCheck={false}
-          placeholder="..."
-        />
-        <div className={styles.Resizer} onMouseDown={handleMouseDown} />
-      </div>
+      <textarea
+        ref={textAreaRef}
+        className={styles.TextArea}
+        value={content}
+        onChange={handleChange}
+        spellCheck={false}
+        placeholder="..."
+      />
+      <div className={styles.Resizer} onMouseDown={handleMouseDown} />
     </div>
   );
 };
