@@ -9,6 +9,7 @@ import Login from "./components/App_components/Login";
 import Edit from "./pages/Edit_page";
 import View from "./pages/View_page";
 import Social from "./pages/Social_page";
+import Search from "./pages/Search_page";
 import { useNavStore } from "./Container/useNavState";
 import { useLoginModalStore } from "./Container/useLoginModalState";
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/edit/:id" element={<Edit />} />
           <Route path="/view/:id" element={<View />} />
           <Route path="/social/:id" element={<Social />} />
+          <Route path="/search/" element={<Search />} />
         </Routes>
       </Router>
     </div>

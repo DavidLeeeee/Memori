@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import styles from "../../../styles/Editpage/ImageArea.module.css";
 import { RiDeleteBin6Line, RiScissorsCutLine } from "react-icons/ri";
-import { useImageCropper } from "./ImageCropper";
+import { useImageCropper } from "../../Functions/ImageCropper";
 
 const ImageArea = () => {
   const [selectedImage, setSelectedImage] = useState(null);

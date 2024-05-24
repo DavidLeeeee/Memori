@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "../../../styles/Editpage/ImageArea.module.css";
+import styles from "../../styles/Editpage/ImageArea.module.css";
 
 export const useImageCropper = (selectedImage, setSelectedImage) => {
   const [cropping, setCropping] = useState(false);

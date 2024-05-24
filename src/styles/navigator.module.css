@@ -61,15 +61,19 @@
 .Memo_List ul {
   list-style: none;
 }
-.Memo_List li {
+.Memo_List li,
+.searchBtn {
   text-decoration: none;
   width: 200px;
   height: 28px;
   margin: 2px 0px;
   transition: background-color 0.2s;
 }
-
-.Memo_List li:hover {
+.searchBtn {
+  margin: 4px 0 4px 12px;
+}
+.Memo_List li:hover,
+.searchBtn:hover {
   background-color: rgba(150, 150, 150, 0.3);
 }
 .Memo_List li a {

@@ -1,0 +1,164 @@
+* {
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* searchBar */
+.topicList {
+  padding-left: 48px;
+  justify-content: flex-start;
+}
+.topicList li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  height: 32px;
+  margin: 8px 12px;
+  border-radius: 30px;
+  background-color: rgb(190, 212, 255);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #0b00a4;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.searchBox {
+  justify-content: space-between;
+  padding: 0 48px;
+}
+.tagSearcher,
+.idSearcher {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  margin: 8px 12px;
+  width: 160px;
+  height: 32px;
+  border-radius: 32px;
+  background-color: #efefef;
+  font-size: 0.9rem;
+  color: rgb(72, 72, 72);
+}
+
+/* TopicBox */
+.unnamedBox {
+  margin: 24px 10px 12px 10px;
+}
+.topBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.topic {
+  margin: 0 0 4px 12px;
+  line-height: 22px;
+  font-size: 22px;
+}
+.pagenator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pageMover {
+  height: 20px;
+}
+.pagenator p {
+  font-size: 0.8rem;
+  margin-left: 12px;
+}
+.bottomBox {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  overflow: hidden; /* 추가 */
+}
+.leftmover,
+.rightmover {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 100%;
+  background-color: rgba(250, 250, 250, 0.3);
+  z-index: 1; /* 추가 */
+}
+.leftmover {
+  left: 0px;
+}
+.rightmover {
+  right: 0px;
+}
+.leftmover:hover,
+.rightmover:hover {
+  background-color: rgba(50, 50, 50, 0.1);
+}
+
+/* GroupCard */
+.CardBox {
+  width: 90%;
+  aspect-ratio: 5/2;
+  margin-left: auto;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(240, 240, 240, 0.3);
+  border-radius: 12%;
+  overflow: hidden;
+}
+.imageBox {
+  margin: auto;
+  height: 90%;
+  aspect-ratio: 1/1;
+  background-color: rgb(227, 42, 42);
+  border-radius: 20%;
+  position: relative;
+}
+.lockedImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.textBox {
+  margin: auto;
+  padding: 0 10px;
+}
+.textBox * {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: visible;
+}
+
+.groupName {
+  font-size: 0.85rem;
+  font-size: clamp(0.6rem, 1.4vw, 1.5rem);
+}
+.tags {
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8px 0;
+}
+.tags li {
+  margin-left: 4px;
+  font-size: 0.7rem;
+  color: #2d6fff;
+  font-size: clamp(0.5rem, 0.7vw, 1rem);
+}
+.info {
+  margin-left: 4px;
+  font-size: 0.7rem;
+  font-size: clamp(0.65rem, 0.8vw, 1.1rem);
+}

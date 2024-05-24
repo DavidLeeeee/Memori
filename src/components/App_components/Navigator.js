@@ -59,7 +59,7 @@ function Navigator() {
         <ul>
           {memos.map((memo) => (
             <li key={memo.id}>
-              <Link className="Memo_Link" to={`/edit/${memo.id}`}>
+              <Link to={`/edit/${memo.id}`}>
                 <AiOutlineHolder size={16} style={{ marginRight: "4px" }} />
                 {memo.category}
               </Link>
@@ -78,7 +78,7 @@ function Navigator() {
         <ul>
           {pins.map((pins) => (
             <li key={pins.id}>
-              <Link className="Memo_Link" to={`/view/${pins.id}`}>
+              <Link to={`/view/${pins.id}`}>
                 <AiOutlineHolder size={16} style={{ marginRight: "4px" }} />
                 {pins.category}
               </Link>
@@ -97,7 +97,7 @@ function Navigator() {
         <ul>
           {social.map((social) => (
             <li key={social.id}>
-              <Link className="Memo_Link" to={`/social/${social.id}`}>
+              <Link to={`/social/${social.id}`}>
                 <AiOutlineHolder size={16} style={{ marginRight: "4px" }} />
                 {social.category}
               </Link>
@@ -108,8 +108,13 @@ function Navigator() {
 
       <hr className={styledBox.Divide} />
 
-      <section>
-        <h3>탐색</h3>
+      <section className={`${styledBox.F_ColBox} ${styles.Memo_List} `}>
+        <Link
+          className={`${styles.MemoCaption} ${styles.searchBtn}`}
+          to={`/search`}
+        >
+          탐색
+        </Link>
       </section>
       <Profile navState={navState} />
     </nav>
