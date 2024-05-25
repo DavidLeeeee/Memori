@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "../../styles/Editpage/ToolBar.module.css";
-import styledBox from "../../styles/boxFramer.module.css";
 import { RiArrowGoBackFill, RiArrowGoForwardFill } from "react-icons/ri";
 import {
   HiOutlineMenu,
@@ -9,32 +8,31 @@ import {
 } from "react-icons/hi";
 import ColorPalette from "./ColorPalette";
 
-export const ToolBar = () => {
+const TextToolbar = ({ applyStyle }) => {
   const [fontSize, setFontSize] = useState(12);
-  const handleFontSizeChange = (e) => {
-    setFontSize(Number(e.target.value));
-  };
   const [showColorPalette, setShowColorPalette] = useState(false);
+
+  const handleFontSizeChange = (e) => {
+    const size = Number(e.target.value);
+    setFontSize(size);
+    applyStyle({ fontSize: `${size}px` });
+  };
+
   const toggleColorPalette = () => {
     setShowColorPalette(!showColorPalette);
   };
 
   return (
-    <div className={`${styledBox.F_RowBox} ${styles.ToolBox}`}>
-      {/* 제어 관련 기능 */}
-      <section className={`${styledBox.F_RowBox} ${styles.controlBox}`}>
-        {/* 작업 뒤로가기 기능 */}
+    <div className={styles.ToolBox}>
+      <section className={styles.controlBox}>
         <button>
           <RiArrowGoBackFill />
         </button>
-        {/* 작업 앞으로 가기 기능 */}
         <button>
           <RiArrowGoForwardFill />
         </button>
       </section>
-      {/* 폰트 관련 기능 */}
-      <section className={`${styledBox.F_RowBox} ${styles.fontBox}`}>
-        {/* 폰트 크기 조절 기능 */}
+      <section className={styles.fontBox}>
         <label>
           <input
             type="number"
@@ -44,20 +42,16 @@ export const ToolBar = () => {
             max="72"
           />
         </label>
-        {/* Bold체 만들기 기능 */}
-        <button>
+        <button onClick={() => applyStyle({ fontWeight: "bold" })}>
           <b>B</b>
         </button>
-        {/* 폰트 기울임 기능 */}
-        <button>
-          <em>T</em>
+        <button onClick={() => applyStyle({ fontStyle: "italic" })}>
+          <em>I</em>
         </button>
-        {/* 폰트 밑줄 기능 */}
-        <button>
-          <u>A</u>
+        <button onClick={() => applyStyle({ textDecoration: "underline" })}>
+          <u>U</u>
         </button>
-        {/* 폰트 배경색 기능 */}
-        <button>
+        <button onClick={() => applyStyle({ backgroundColor: "yellow" })}>
           <div
             style={{
               padding: "0 6px",
@@ -67,28 +61,25 @@ export const ToolBar = () => {
             T
           </div>
         </button>
-        {/* 글자색 기능 */}
         <button
           onClick={toggleColorPalette}
           style={{ backgroundColor: "black" }}
         ></button>
         {showColorPalette && (
-          <ColorPalette setShowColorPalette={setShowColorPalette} />
+          <ColorPalette
+            setShowColorPalette={setShowColorPalette}
+            applyStyle={applyStyle}
+          />
         )}
       </section>
-
-      {/* 정렬 관련 기능 / 해당 기능은 textArea의 내용물 통째로 조절되도록 할 것 */}
-      <section className={`${styledBox.F_RowBox} ${styles.ArrayBox}`}>
-        {/* 텍스트 좌로 정렬 */}
-        <button>
+      <section className={styles.ArrayBox}>
+        <button onClick={() => applyStyle({ textAlign: "left" })}>
           <HiOutlineMenuAlt2 />
         </button>
-        {/* 텍스트 좌로 정렬 */}
-        <button>
+        <button onClick={() => applyStyle({ textAlign: "center" })}>
           <HiOutlineMenu />
         </button>
-        {/* 텍스트 우로 정렬 */}
-        <button>
+        <button onClick={() => applyStyle({ textAlign: "right" })}>
           <HiOutlineMenuAlt3 />
         </button>
       </section>
@@ -96,4 +87,4 @@ export const ToolBar = () => {
   );
 };
 
-export default ToolBar;
+export default TextToolbar;

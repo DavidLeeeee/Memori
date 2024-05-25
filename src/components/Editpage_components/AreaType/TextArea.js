@@ -1,44 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../../../styles/Editpage/TextArea.module.css";
 
-export const TextArea = () => {
-  const [content, setContent] = useState("");
-  const [width, setWidth] = useState(90);
-  const textAreaRef = useRef(null);
-  const containerRef = useRef(null);
-  const isResizing = useRef(false);
-  const startX = useRef(0);
-  const startWidth = useRef(0);
+export const TextArea = ({ id }) => {
+  const [content, setContent] = useState(""); // 텍스트 콘텐츠 상태
+  const textAreaRef = useRef(null); // 텍스트 영역 참조
 
+  // 텍스트 변경 핸들러
   const handleChange = (e) => {
     setContent(e.target.value);
   };
 
-  const handleMouseDown = (e) => {
-    isResizing.current = true;
-    startX.current = e.clientX;
-    startWidth.current = containerRef.current.offsetWidth;
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
-  };
-
-  const handleMouseMove = (e) => {
-    if (isResizing.current) {
-      const dx = e.clientX - startX.current;
-      const newWidth =
-        ((startWidth.current + dx) /
-          containerRef.current.parentElement.offsetWidth) *
-        100;
-      setWidth(Math.max(10, Math.min(newWidth, 100))); // 최소 10%, 최대 100%
-    }
-  };
-
-  const handleMouseUp = () => {
-    isResizing.current = false;
-    document.removeEventListener("mousemove", handleMouseMove);
-    document.removeEventListener("mouseup", handleMouseUp);
-  };
-
+  // 텍스트 영역의 높이를 자동으로 조정
   useEffect(() => {
     if (textAreaRef.current) {
       textAreaRef.current.style.height = "auto";
@@ -47,11 +19,7 @@ export const TextArea = () => {
   }, [content]);
 
   return (
-    <div
-      className={styles.ContentBox}
-      ref={containerRef}
-      style={{ width: `${width}%`, minWidth: "320px" }}
-    >
+    <div className={styles.ContentBox}>
       <textarea
         ref={textAreaRef}
         className={styles.TextArea}
@@ -60,7 +28,6 @@ export const TextArea = () => {
         spellCheck={false}
         placeholder="..."
       />
-      <div className={styles.Resizer} onMouseDown={handleMouseDown} />
     </div>
   );
 };

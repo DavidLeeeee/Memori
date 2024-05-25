@@ -109,6 +109,11 @@
   border-radius: 12%;
   overflow: hidden;
 }
+.cardContainer {
+  display: flex;
+  overflow: hidden; /* Hide overflowing cards */
+  width: 100%; /* Adjust as needed */
+}
 .imageBox {
   margin: auto;
   height: 90%;

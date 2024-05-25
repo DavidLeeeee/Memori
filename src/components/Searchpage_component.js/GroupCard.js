@@ -3,12 +3,12 @@ import styles from "../../styles/Searchpage/searchPage.module.css";
 import styledBox from "../../styles/boxFramer.module.css";
 import { CiLock } from "react-icons/ci";
 
-const GroupCard = () => {
+const GroupCard = ({ keyProp }) => {
   return (
     <div style={{ width: "25%" }}>
       <section className={`${styledBox.F_RowBox} ${styles.CardBox}`}>
         <div className={styles.imageBox}>
-          이미지공간
+          {keyProp}
           <div className={styles.lockedImg}>
             <CiLock color="white" size={28} />
           </div>

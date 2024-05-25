@@ -4,11 +4,12 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 95%;
+  width: 90%;
   max-width: 1365px;
   height: fit-content;
   padding: 8px 0;
   min-width: 320px;
+  margin: 0 auto;
 }
 
 .TextArea {
@@ -24,14 +25,4 @@
   overflow: hidden;
   resize: none;
   outline: #000;
-}
-
-.Resizer {
-  position: absolute;
-  top: 0;
-  right: 0px;
-  width: 8px;
-  height: 100%;
-  cursor: ew-resize;
-  background-color: transparent;
 }
