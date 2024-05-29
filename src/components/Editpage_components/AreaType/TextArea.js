@@ -1,33 +1,34 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css"; // Quill의 기본 스타일
 import styles from "../../../styles/Editpage/TextArea.module.css";
 
+// Quill 모듈 설정
+const modules = {
+  toolbar: [
+    [{ font: [] }],
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    ["bold", "italic", "underline", "strike"],
+    [{ color: [] }, { background: [] }],
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ indent: "-1" }, { indent: "+1" }],
+    ["clean"],
+  ],
+};
+
+// TextArea 컴포넌트
 export const TextArea = ({ id }) => {
   const [content, setContent] = useState(""); // 텍스트 콘텐츠 상태
-  const textAreaRef = useRef(null); // 텍스트 영역 참조
-
-  // 텍스트 변경 핸들러
-  const handleChange = (e) => {
-    setContent(e.target.value);
-  };
-
-  // 텍스트 영역의 높이를 자동으로 조정
-  useEffect(() => {
-    if (textAreaRef.current) {
-      textAreaRef.current.style.height = "auto";
-      textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
-    }
-  }, [content]);
 
   return (
     <div className={styles.ContentBox}>
-      <textarea
-        ref={textAreaRef}
-        className={styles.TextArea}
+      <ReactQuill
         value={content}
-        onChange={handleChange}
-        spellCheck={false}
-        placeholder="..."
+        onChange={setContent}
+        modules={modules}
+        className={styles.TextArea}
       />
+      <div className={styles.contentId}>{id}</div>
     </div>
   );
 };

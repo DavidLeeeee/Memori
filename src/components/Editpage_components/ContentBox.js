@@ -17,8 +17,9 @@ const ItemType = "CONTENT_BOX";
 
 export const ContentBox = ({ id, type, index, moveContentBox, removeBox }) => {
   const { isModalOpen, handleMouseEnter, handleMouseLeave } = useHoverModal(); // 마우스 호버 모달 훅 사용
-
   const ref = useRef(null); // 드롭 영역 참조
+  const handleRef = useRef(null); // 드래그 핸들 참조
+
   // useDrop 훅 설정
   const [, drop] = useDrop({
     accept: ItemType, // 드롭 가능한 아이템 타입
@@ -31,6 +32,7 @@ export const ContentBox = ({ id, type, index, moveContentBox, removeBox }) => {
       if (dragIndex === hoverIndex) {
         return;
       }
+
       const hoverBoundingRect = ref.current?.getBoundingClientRect();
       const hoverMiddleY =
         (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
@@ -47,6 +49,7 @@ export const ContentBox = ({ id, type, index, moveContentBox, removeBox }) => {
       item.index = hoverIndex;
     },
   });
+
   // useDrag 훅 설정
   const [{ isDragging }, drag, preview] = useDrag({
     type: ItemType, // 드래그 가능한 아이템 타입
@@ -55,23 +58,31 @@ export const ContentBox = ({ id, type, index, moveContentBox, removeBox }) => {
       isDragging: monitor.isDragging(), // 드래그 상태 수집
     }),
   });
-  drag(drop(ref)); // 드래그와 드롭 기능을 ref에 연결
+
+  drag(handleRef); // 드래그 기능을 핸들에 연결
+  drop(ref); // 드롭 기능을 전체 박스에 연결
+  preview(ref); // 드래그 미리보기를 전체 박스로 설정
 
   return (
     <div
       ref={ref}
       className={`${styles.ContentBox} ${isDragging ? styles.dragging : ""}`} // 드래그 중일 때 스타일 추가
     >
-      <AiOutlineHolder className={styles.icon} />
+      {/* 순서바꾸기 버튼 */}
+      <div ref={handleRef} className={styles.handle}>
+        <AiOutlineHolder className={styles.icon} />
+      </div>
+      {/* 컨텐츠박스 */}
       <div className={styles.contentArea}>
         {type === "embed" && <EmbedArea id={id} />}
         {type === "text" && (
-          <div ref={preview} style={{ display: "flex", width: "100%" }}>
+          <div style={{ display: "flex", width: "100%" }}>
             <TextArea id={id} />
           </div>
         )}
         {type === "image" && <ImageArea id={id} />}
       </div>
+      {/* 우측 툴 아이콘 */}
       <div
         className={styles.iconContainer}
         onMouseEnter={handleMouseEnter}

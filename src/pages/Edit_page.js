@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styledBox from "../styles/boxFramer.module.css";
-import ToolBar from "../components/Editpage_components/ToolBar";
 import ContentBox from "../components/Editpage_components/ContentBox";
 import ContentGenerator from "../components/Editpage_components/ContentGenerator";
 import { DndProvider } from "react-dnd";
@@ -33,7 +32,6 @@ function Edit_page() {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <ToolBar />
       <div className={styledBox.MainContainer}>
         <ContentGenerator addContentBox={(type) => addContentBox(0, type)} />
         {contentBoxes.map((box, index) => (

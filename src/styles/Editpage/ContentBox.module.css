@@ -58,3 +58,7 @@
   align-items: center;
   position: relative;
 }
+/* ContentBox.module.css */
+.ContentBox.dragging {
+  opacity: 0.8;
+}
