@@ -1,9 +1,11 @@
 import React from "react";
-
+import SocialContainer from "../components/Socialpage_component/SocialContainer";
 function Social_page() {
   return (
     <div>
-      <h2>Social 페이지</h2>
+      <SocialContainer containerName="좋아요 표시한 메모" />
+      <SocialContainer containerName="최신 등록 메모" />
+      <SocialContainer containerName="" />
     </div>
   );
 }
