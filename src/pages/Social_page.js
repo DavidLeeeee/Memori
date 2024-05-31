@@ -5,7 +5,7 @@ function Social_page() {
     <div>
       <SocialContainer containerName="좋아요 표시한 메모" />
       <SocialContainer containerName="최신 등록 메모" />
-      <SocialContainer containerName="" />
+      <SocialContainer containerName="인기 메모" />
     </div>
   );
 }

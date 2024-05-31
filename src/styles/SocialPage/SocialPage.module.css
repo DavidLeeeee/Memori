@@ -1,0 +1,85 @@
+.SocialContainer {
+  background-color: antiquewhite;
+  margin: 24px 0 0 0;
+}
+
+.topBox {
+  justify-content: space-between;
+  padding: 0 24px 0 48px;
+}
+
+.topic {
+  font-size: 1.2rem;
+}
+
+.bottomBoxWrapper {
+  position: relative;
+}
+
+.bottomBox {
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  display: flex; /* Flex container for horizontal scrolling */
+  scroll-behavior: smooth;
+}
+
+.bottomBox::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+/* CardNews */
+.CardNews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  min-width: 240px;
+  max-width: 400px;
+  aspect-ratio: 4/5;
+  background-color: aqua;
+  margin: 0 12px;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: black;
+}
+
+.text {
+  margin-top: 12px;
+}
+
+/* shifter */
+.leftshifter,
+.rightshifter {
+  font-size: 42px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2000;
+  color: rgb(86, 110, 160);
+  background-color: rgba(100, 100, 100, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 95%;
+  transition: background-color 0.2s;
+}
+
+.leftshifter {
+  left: 0px;
+}
+
+.rightshifter {
+  right: 0px;
+}
+
+.leftshifter:hover,
+.rightshifter:hover {
+  background-color: rgba(100, 100, 100, 0.3);
+}
