@@ -1,5 +1,5 @@
 .SocialContainer {
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
   margin: 24px 0 0 0;
 }
 
@@ -35,15 +35,14 @@
   align-items: center;
   justify-content: center;
   width: 20%;
-  min-width: 240px;
-  max-width: 400px;
-  aspect-ratio: 4/5;
-  background-color: aqua;
-  margin: 0 12px;
+  min-width: 20%;
+  max-width: 20%;
+  aspect-ratio: 1/1;
+  /* background-color: aqua; */
 }
 
 .image {
-  width: 100%;
+  width: 90%;
   aspect-ratio: 1/1;
   background-color: black;
 }
@@ -62,24 +61,25 @@
   transform: translateY(-50%);
   z-index: 2000;
   color: rgb(86, 110, 160);
-  background-color: rgba(100, 100, 100, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 32px;
-  height: 95%;
+  height: 100%;
   transition: background-color 0.2s;
 }
 
 .leftshifter {
   left: 0px;
+  border-radius: 0 12px 12px 0;
 }
 
 .rightshifter {
   right: 0px;
+  border-radius: 12px 0 0 12px;
 }
 
 .leftshifter:hover,
 .rightshifter:hover {
-  background-color: rgba(100, 100, 100, 0.3);
+  background-color: rgba(100, 100, 100, 0.1);
 }

@@ -1,9 +1,38 @@
-import React from "react";
+import React, { useRef } from "react";
 import CardNews from "./CardNews";
 import styledBox from "../../styles/boxFramer.module.css";
 import styles from "../../styles/SocialPage/SocialPage.module.css";
-import Shifters from "./ListMover";
+
 const SocialContainer = ({ containerName }) => {
+  const scrollContainerRef = useRef(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -scrollContainerRef.current.clientWidth,
+        behavior: "smooth",
+      });
+    }
+  };
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current;
+      if (scrollLeft + clientWidth >= scrollWidth) {
+        // If we are at the end, scroll to the start
+        scrollContainerRef.current.scrollTo({
+          left: 0,
+          behavior: "smooth",
+        });
+      } else {
+        scrollContainerRef.current.scrollBy({
+          left: clientWidth,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
+
   return (
     <section className={`${styledBox.F_ColBox} ${styles.SocialContainer}`}>
       <div className={`${styledBox.F_RowBox} ${styles.topBox}`}>
@@ -11,7 +40,12 @@ const SocialContainer = ({ containerName }) => {
         <p>더보기</p>
       </div>
       <div className={styles.bottomBoxWrapper}>
-        <div className={`${styledBox.F_RowBox} ${styles.bottomBox}`}>
+        <div
+          ref={scrollContainerRef}
+          className={`${styledBox.F_RowBox} ${styles.bottomBox}`}
+        >
+          <CardNews />
+          <CardNews />
           <CardNews />
           <CardNews />
           <CardNews />
@@ -23,7 +57,12 @@ const SocialContainer = ({ containerName }) => {
           <CardNews />
           <CardNews />
         </div>
-        <Shifters />
+        <div className={styles.leftshifter} onClick={scrollLeft}>
+          &lt;
+        </div>
+        <div className={styles.rightshifter} onClick={scrollRight}>
+          &gt;
+        </div>
       </div>
     </section>
   );
